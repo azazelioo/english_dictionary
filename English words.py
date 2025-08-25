@@ -2,13 +2,12 @@ import sqlite3
 import os
 import random
 
-# Подключение к базе данных
 script_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(script_dir, "English.db")
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
-# Создаём таблицу (если её нет)
+
 cursor.execute('''CREATE TABLE IF NOT EXISTS Words
                (id INTEGER PRIMARY KEY,
                Word TEXT NOT NULL UNIQUE,
@@ -84,4 +83,5 @@ def main():
             print("Некорректный ввод. Попробуйте снова.")
 if __name__ == "__main__":
     main()
+
     conn.close()
